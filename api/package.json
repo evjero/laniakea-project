@@ -1,0 +1,9 @@
+{
+	"name": "@types/laniakea-project",
+	"version": "1.0.0",
+	"description": "",
+	"author": "evjero (https://github.com/evjero)",
+	"license": "MIT",
+	"main": "none",
+	"types": "index.d.ts"
+}
