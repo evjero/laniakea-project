@@ -34,7 +34,7 @@ backend.use(
 		},
 	})
 );
-//Logging only errors
+//Logging only errors >= 400
 backend.use(
 	morgan('combined', {
 		skip: (_req, res) => {
@@ -42,10 +42,7 @@ backend.use(
 		},
 	})
 );
-//Handle JSON requests/responses
-backend.use(express.json());
-//Public files
-//API Routes
-backend.use(apiRouter);
+backend.use(express.json()); //Handle JSON requests/responses
+backend.use('/api/v1', apiRouter); //API Routes
 
 export default backend;

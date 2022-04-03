@@ -12,7 +12,7 @@ function App(props: Props): JSX.Element {
 			<h1>Planets:</h1>
 			<ul style={{ maxHeight: '200px', overflow: 'auto' }}>
 				{props.planets.map((planet) => (
-					<li key={planet.kepid}>{planet.kepid}</li>
+					<li key={planet.rowid}>{planet.kepid}</li>
 				))}
 			</ul>
 		</div>

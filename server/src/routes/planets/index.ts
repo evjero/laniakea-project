@@ -4,7 +4,7 @@ import { getHabitablePlanets } from './getHabitablePlanets';
 
 const planetsRouter = express.Router();
 
-planetsRouter.get('/', getAllPlanets);
-planetsRouter.get('/?habitable=true', getHabitablePlanets);
+planetsRouter.get('/planets', getAllPlanets);
+planetsRouter.get('/planets?habitable=true', getHabitablePlanets);
 
 export { planetsRouter };

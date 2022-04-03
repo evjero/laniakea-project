@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { addPlanets } from './stores/@reduxjs/slices/planetsSlice';
 import { StoreDispatch } from './stores/@reduxjs/store';
+import { AxiosResponse } from 'axios';
 
 type DispatchProps = {
 	setPlanets: (planets: Planet[]) => void;
@@ -20,10 +21,9 @@ function AppInitializer(props: Props) {
 	useEffect(() => {
 		console.debug('AppInitializer useeffect');
 		getPlanets()
-			.then((response) => {
-				console.log(response.data);
-				// setPlanets(response.data);
-				// setIsLoading(false);
+			.then((response: AxiosResponse<Planet[]>) => {
+				setPlanets(response.data);
+				setIsLoading(false);
 			})
 			.catch((e: any) => {
 				throw new Error(e);
