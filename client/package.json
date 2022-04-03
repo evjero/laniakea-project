@@ -1,0 +1,25 @@
+{
+	"name": "client",
+	"private": true,
+	"version": "1.0.0",
+	"description": "",
+	"main": "client.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "epsnaught (https://github.com/epsnaught)",
+	"license": "MIT",
+	"dependencies": {
+		"@reduxjs/toolkit": "1.8.1",
+		"arwes": "1.0.0-alpha.5",
+		"axios": "^0.26.1",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-redux": "^7.2.8",
+		"redux-logger": "^3.0.6"
+	},
+	"devDependencies": {
+		"@types/redux-logger": "^3.0.9",
+		"typescript": "^4.6.3"
+	}
+}

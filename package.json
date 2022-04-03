@@ -1,0 +1,25 @@
+{
+	"name": "laniakea-project",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server/index.ts",
+	"scripts": {
+		"start-server": "ts-node --skip-project server/server.ts",
+		"test": "echo \"No test specified\" && exit 0",
+		"typecheck": "tsc --noemit"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/evjero/laniakea-project.git"
+	},
+	"author": "epsnaught (https://github.com/epsnaught)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/evjero/laniakea-project/issues"
+	},
+	"homepage": "https://github.com/evjero/laniakea-project#readme",
+	"peerDependencies": {
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0"
+	}
+}
