@@ -3,11 +3,16 @@
 	"private": true,
 	"version": "1.0.0",
 	"description": "",
-	"main": "client.ts",
+	"main": "src/client.tsx",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "tsc && vite build",
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+		"preview": "vite preview",
+		"start": "vite dev",
+		"test": "echo \"No test specified for client\" && exit 0",
+		"typecheck": "tsc --noEmit"
 	},
-	"author": "epsnaught (https://github.com/epsnaught)",
+	"author": "evjero (https://github.com/evjero)",
 	"license": "MIT",
 	"dependencies": {
 		"@reduxjs/toolkit": "1.8.1",
@@ -19,7 +24,20 @@
 		"redux-logger": "^3.0.6"
 	},
 	"devDependencies": {
+		"@types/react": "17.0.43",
+		"@types/react-dom": "17.0.14",
 		"@types/redux-logger": "^3.0.9",
-		"typescript": "^4.6.3"
+		"@typescript-eslint/eslint-plugin": "^5.8.1",
+		"@typescript-eslint/parser": "^5.8.1",
+		"@vitejs/plugin-react": "^1.1.4",
+		"autoprefixer": "^10.4.1",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.24.0",
+		"eslint-plugin-react": "^7.24.0",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"sass": "^1.49.11",
+		"typescript": "^4.6.3",
+		"vite": "^2.9.1"
 	}
 }

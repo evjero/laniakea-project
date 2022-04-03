@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
-import type { Planet } from '../../../../../server/src/api/types/Planet';
+import type { Store } from '../store';
+import type { Planet } from '@api/types/Planet';
 // Define a type for the slice state
 interface PlanetState {
 	planets: Planet[];
@@ -19,11 +19,14 @@ export const planetsSlice = createSlice({
 		addPlanet: (state, action: PayloadAction<Planet>) => {
 			state.planets = [...state.planets, action.payload];
 		},
+		addPlanets: (state, action: PayloadAction<Planet[]>) => {
+			state.planets = [...state.planets, ...action.payload];
+		},
 	},
 });
 
-export const { addPlanet } = planetsSlice.actions;
+export const { addPlanet, addPlanets } = planetsSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
-export const getPlanets = (state: RootState) => state.planets.planets;
+export const getPlanets = (state: Store) => state.planets.planets;
 
 export default planetsSlice.reducer;

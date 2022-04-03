@@ -2,17 +2,19 @@
 	"name": "laniakea-project",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server/index.ts",
+	"main": "server/build/server.js",
 	"scripts": {
-		"start-server": "ts-node --skip-project server/server.ts",
-		"test": "echo \"No test specified\" && exit 0",
-		"typecheck": "tsc --noemit"
+		"client": "npm start --prefix client",
+		"install": "cd server && npm i && cd ../client && npm i && cd ..",
+		"start": "npm run server & npm run client",
+		"server": "npm start --prefix server",
+		"test": "npm run test --prefix server && npm run test --prefix client"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/evjero/laniakea-project.git"
 	},
-	"author": "epsnaught (https://github.com/epsnaught)",
+	"author": "evjero (https://github.com/evjero)",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/evjero/laniakea-project/issues"

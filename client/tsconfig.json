@@ -6,15 +6,14 @@
 		"declaration": false,
 		"esModuleInterop": false,
 		"forceConsistentCasingInFileNames": true,
-		"inlineSources": true,
 		"isolatedModules": true,
 		"jsx": "react-jsx",
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
-		"module": "CommonJS",
+		"module": "ESNext",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
-		"noEmit": true,
+		"noEmit": false,
 		"noEmitOnError": true,
 		"noUnusedLocals": false,
 		"noUnusedParameters": true,
@@ -22,11 +21,16 @@
 		"removeComments": true,
 		"strictNullChecks": true,
 		"skipLibCheck": true,
-		"sourceMap": true,
+		"sourceMap": false,
 		"strict": true,
 		"target": "ES2020",
-		"useDefineForClassFields": true
+		"useDefineForClassFields": true,
+		"baseUrl": "./src",
+		"paths": {
+			"@api/*": ["../../api/*"]
+		},
+		"types": ["react/next", "react-dom/next", "../api"]
 	},
-	"include": ["./**/*.ts"],
-	"exclude": ["../node_modules"]
+	"include": ["./src/**/*.ts", "./src/**/*.tsx"],
+	"exclude": ["./node_modules"]
 }

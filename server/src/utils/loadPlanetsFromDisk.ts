@@ -1,7 +1,7 @@
 import { parse } from 'csv-parse';
 import fs from 'fs';
 import CONSOLE_ID from '../consoleID';
-import { Planet } from '../api/types/Planet';
+import { Planet } from '@api/types/Planet';
 import path from 'path';
 
 export function loadPlanetsFromDisk(): Promise<Planet[]> {
@@ -24,9 +24,6 @@ export function loadPlanetsFromDisk(): Promise<Planet[]> {
 			reject(e);
 		});
 		pipe.on('end', () => {
-			console.debug(
-				`[${CONSOLE_ID}] Finished loading ${loadedPlanets.length} planets!`
-			);
 			resolve(loadedPlanets);
 		});
 	});
