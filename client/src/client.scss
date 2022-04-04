@@ -4,9 +4,17 @@ body {
 	width: 100%;
 	overflow: hidden;
 	font-family: 'Open Sans', 'Segoe UI', sans-serif;
+	font-size: 14px;
+	background-color: #020522;
 	color: #fafafa;
+	padding: 0;
+	margin: 0;
 }
 #root {
 	height: 100%;
 	width: 100%;
+}
+
+.app {
+	margin: calc(16 / 14) + rem;
 }

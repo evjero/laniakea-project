@@ -10,6 +10,11 @@ This project, despite it's name, will use Exoplanet data captured by Kepler via 
 
 These KOI will enable us to launch our own missions to explore the edges of space.
 
+# Commands
+
+`npm run install` - Installs dependencies for both client and server
+`npm start` - Starts a development build of both the server (Node.js + Express) and client (Vite + React)
+
 # Appendix
 
 ## Node.js

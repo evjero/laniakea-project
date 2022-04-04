@@ -15,12 +15,16 @@
 	"author": "evjero (https://github.com/evjero)",
 	"license": "MIT",
 	"dependencies": {
+		"@emotion/react": "^11.8.2",
+		"@emotion/styled": "^11.8.1",
+		"@mui/material": "^5.5.3",
 		"@reduxjs/toolkit": "1.8.1",
 		"arwes": "1.0.0-alpha.5",
 		"axios": "^0.26.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-redux": "^7.2.8",
+		"react-router-dom": "6.3.0",
 		"redux-logger": "^3.0.6"
 	},
 	"devDependencies": {

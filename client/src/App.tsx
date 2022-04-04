@@ -1,28 +1,14 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Store } from './stores/@reduxjs/store';
-import type { API } from '@api/types/API';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AppLayout from './components/AppLayout';
 
-type StateProps = API;
-type DispatchProps = {};
-type Props = StateProps & DispatchProps;
-function App(props: Props): JSX.Element {
+export function App(): JSX.Element {
 	return (
-		<div>
-			<h1>Planets:</h1>
-			<ul style={{ maxHeight: '200px', overflow: 'auto' }}>
-				{props.planets.map((planet) => (
-					<li key={planet.rowid}>{planet.kepid}</li>
-				))}
-			</ul>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<AppLayout />} />
+				<Route path="*" element={<p>404</p>} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
-
-export default connect(
-	(store: Store): StateProps => ({
-		planets: store.planets.planets,
-		launches: store.launches.launches,
-	}),
-	() => ({})
-)(App);
