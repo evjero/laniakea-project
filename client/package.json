@@ -19,7 +19,6 @@
 		"@emotion/styled": "^11.8.1",
 		"@mui/material": "^5.5.3",
 		"@reduxjs/toolkit": "1.8.1",
-		"arwes": "1.0.0-alpha.5",
 		"axios": "^0.26.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",

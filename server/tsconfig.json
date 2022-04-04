@@ -15,7 +15,7 @@
 	},
 	"compileOnSave": false,
 	"compilerOptions": {
-		"allowJs": false,
+		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"declaration": false,
 		"esModuleInterop": true,
@@ -42,9 +42,13 @@
 		"paths": {
 			"@api/*": ["../../api/*"]
 		},
-		"types": ["node", "../api"],
+		"types": ["jest", "node", "../api"],
 		"useDefineForClassFields": true
 	},
-	"include": ["./**/*.ts"],
+	"include": [
+		"./**/*.ts",
+		"src/mocks/handlers.js",
+		"src/routes/launches/launches.test.js"
+	],
 	"exclude": ["node_modules", "build"]
 }
