@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Planet } from '@api/types/Planet';
-import { getPlanets } from './hooks/planets/getPlanets';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { addPlanets } from './stores/@reduxjs/slices/planetsSlice';
 import { StoreDispatch } from './stores/@reduxjs/store';
 import { AxiosResponse } from 'axios';
+import { getHabitablePlanets } from './hooks/planets/getHabitablePlanets';
 
 type DispatchProps = {
 	setPlanets: (planets: Planet[]) => void;
@@ -18,7 +18,7 @@ function AppInitializer(props: Props) {
 	const { children, setPlanets } = props;
 
 	useEffect(() => {
-		getPlanets()
+		getHabitablePlanets()
 			.then((response: AxiosResponse<Planet[]>) => {
 				setPlanets(response.data);
 			})

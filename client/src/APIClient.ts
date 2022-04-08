@@ -32,4 +32,10 @@ export class APIClient {
 	): Promise<R> {
 		return this.axiosClient.get(url, config);
 	}
+	post<T = any, R = AxiosResponse<T, any>, D = any>(
+		url: string,
+		config?: AxiosRequestConfig<D> | undefined
+	): Promise<R> {
+		return this.axiosClient.post(url, config);
+	}
 }

@@ -11,7 +11,7 @@ export type Launch = {
 	/** Rocket type */
 	rocket: string;
 	/** Recorded success */
-	success: boolean;
+	success?: boolean;
 	/** Upcoming flag */
 	upcoming: boolean;
 };

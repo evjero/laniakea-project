@@ -9,9 +9,9 @@ import { ErrorBoundary } from './features/ErrorBoundary';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './features/Home';
-import { Launch } from './features/Launch';
-import { ScheduledLaunches } from './features/ScheduledLaunches';
-import { RecordedLaunches } from './features/RecordedLaunches';
+import Launch from './features/Launch';
+import ScheduledLaunches from './features/ScheduledLaunches';
+import RecordedLaunches from './features/RecordedLaunches';
 import { NotFound } from './features/NotFound';
 
 const rootElement = document.getElementById('root');
