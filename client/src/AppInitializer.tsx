@@ -16,21 +16,18 @@ type Props = {
 
 function AppInitializer(props: Props) {
 	const { children, setPlanets } = props;
-	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	useEffect(() => {
-		console.debug('AppInitializer useeffect');
 		getPlanets()
 			.then((response: AxiosResponse<Planet[]>) => {
 				setPlanets(response.data);
-				setIsLoading(false);
 			})
 			.catch((e: any) => {
 				throw new Error(e);
 			});
 	}, []);
 
-	return isLoading ? <div>Loading...</div> : <>{children}</>;
+	return <>{children}</>;
 }
 export default connect(
 	undefined,

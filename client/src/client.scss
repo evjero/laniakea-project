@@ -1,3 +1,6 @@
+$bg: #fafafa;
+$color: #020522;
+
 html,
 body {
 	height: 100%;
@@ -5,8 +8,8 @@ body {
 	overflow: hidden;
 	font-family: 'Open Sans', 'Segoe UI', sans-serif;
 	font-size: 14px;
-	background-color: #020522;
-	color: #fafafa;
+	background-color: $bg;
+	color: $color;
 	padding: 0;
 	margin: 0;
 }
@@ -14,7 +17,35 @@ body {
 	height: 100%;
 	width: 100%;
 }
-
+.not404 {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+}
 .app {
 	margin: calc(16 / 14) + rem;
+}
+.nav {
+	a {
+		text-decoration: none;
+		color: $color;
+		font-weight: 600;
+		margin: 0px 8px;
+	}
+}
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	p {
+		border-top: 1px solid $color;
+		width: 100%;
+		padding: 8px;
+	}
 }
