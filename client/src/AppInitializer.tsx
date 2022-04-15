@@ -3,7 +3,7 @@ import { Planet } from '@api/types/Planet';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { addPlanets } from './stores/@reduxjs/slices/planetsSlice';
-import { StoreDispatch } from './stores/@reduxjs/store';
+import { AppDispatch } from './stores/@reduxjs/store';
 import { AxiosResponse } from 'axios';
 import { getHabitablePlanets } from './hooks/planets/getHabitablePlanets';
 
@@ -31,7 +31,7 @@ function AppInitializer(props: Props) {
 }
 export default connect(
 	undefined,
-	(dispatch: StoreDispatch): DispatchProps => ({
+	(dispatch: AppDispatch): DispatchProps => ({
 		setPlanets: (planets: Planet[]) => dispatch(addPlanets(planets)),
 	})
 )(AppInitializer);

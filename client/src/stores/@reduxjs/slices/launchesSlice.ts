@@ -1,6 +1,6 @@
 import { Launch } from '@api/types/Launch';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { Store } from '../store';
+import type { RootState } from '../store';
 // Define a type for the slice state
 interface LaunchState {
 	launches: Launch[];
@@ -23,6 +23,6 @@ export const launchesSlice = createSlice({
 
 export const { addLaunch } = launchesSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
-export const getPlanets = (state: Store) => state.launches.launches;
+export const getPlanets = (state: RootState) => state.launches.launches;
 
 export default launchesSlice.reducer;

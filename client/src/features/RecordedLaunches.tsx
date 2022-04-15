@@ -3,7 +3,7 @@ import { Alert, Container, Table } from 'react-bootstrap';
 import { API } from '@api/types/API';
 import { connect } from 'react-redux';
 import { Launch } from '@api/types/Launch';
-import { Store } from 'stores/@reduxjs/store';
+import { RootState } from 'stores/@reduxjs/store';
 
 type StateProps = Omit<API, 'planets'>;
 type Props = StateProps;
@@ -64,7 +64,7 @@ function RecordedLaunches(props: Props): JSX.Element {
 }
 
 export default connect(
-	(store: Store): StateProps => ({
+	(store: RootState): StateProps => ({
 		launches: store.launches.launches,
 	})
 )(RecordedLaunches);
