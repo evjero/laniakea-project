@@ -3,14 +3,10 @@ import { Alert, Container, Table } from 'react-bootstrap';
 import { API } from '@api/types/API';
 import { connect } from 'react-redux';
 import { Launch } from '@api/types/Launch';
-import { AppDispatch, RootState } from 'stores/@reduxjs/store';
-import { abortLaunch } from '../stores/@reduxjs/slices/launchesSlice';
+import { RootState } from 'stores/@reduxjs/store';
 
 type StateProps = Omit<API, 'planets'>;
-type DispatchProps = {
-	abortLaunch: (flightNumber: number) => void;
-};
-type Props = StateProps & DispatchProps;
+type Props = StateProps;
 function RecordedLaunches(props: Props): JSX.Element {
 	const previousLaunches = props.launches.filter(
 		(launch) => !launch.upcoming
@@ -49,15 +45,12 @@ function RecordedLaunches(props: Props): JSX.Element {
 										<td>
 											<span
 												style={{
-													color: 'red',
+													color: launch.success
+														? 'greenyellow'
+														: 'red',
 												}}
-												onClick={() =>
-													abortLaunch(
-														launch.flightNumber
-													)
-												}
 											>
-												✖
+												█
 											</span>
 										</td>
 										<td>{launch.flightNumber}</td>
@@ -82,9 +75,5 @@ function RecordedLaunches(props: Props): JSX.Element {
 export default connect(
 	(store: RootState): StateProps => ({
 		launches: store.launches.launches,
-	}),
-	(dispatch: AppDispatch): DispatchProps => ({
-		abortLaunch: (flightNumber: number) =>
-			dispatch(abortLaunch(flightNumber)),
 	})
 )(RecordedLaunches);

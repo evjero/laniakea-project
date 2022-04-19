@@ -15,7 +15,9 @@ export class APIClient {
 		this.axiosClient = axios.create({
 			baseURL: API_URL,
 			timeout: 10000,
-			headers: { 'X-tracability-id': 'lp-client' },
+			headers: {
+				'X-tracability-id': 'lp-client',
+			},
 		});
 	}
 
@@ -36,7 +38,7 @@ export class APIClient {
 		url: string,
 		config?: AxiosRequestConfig<D> | undefined
 	): Promise<R> {
-		return this.axiosClient.post(url, config);
+		return this.axiosClient.post(url, config?.data, config);
 	}
 	delete<T = any, R = AxiosResponse<T, any>, D = any>(
 		url: string,

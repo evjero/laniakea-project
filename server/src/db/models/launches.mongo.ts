@@ -3,10 +3,9 @@ import { Schema, model } from 'mongoose';
 import { PlanetModel } from './planets.mongo';
 
 export const LaunchesSchema = new Schema<Launch>({
-	//TODO map to Planet Schema
+	/** kepler_name of Planet */
 	destination: {
-		type: Schema.Types.ObjectId,
-		ref: PlanetModel,
+		type: Schema.Types.String,
 		required: true,
 	},
 	/** Unique flight number */

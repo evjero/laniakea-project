@@ -30,7 +30,7 @@ function Launch(props: Props): JSX.Element {
 				launchDate: new Date(date.toString()),
 				mission: mission.toString(),
 				rocket: rocket.toString(),
-				destination: target.toString() as Planet['kepoi_name'],
+				destination: target.toString(),
 				flightNumber: Math.fround(Math.random() * 3.14159 * 42000),
 				upcoming: true,
 			};
@@ -98,20 +98,16 @@ function Launch(props: Props): JSX.Element {
 						{React.useMemo(() => {
 							return props.planets?.map((planet) => (
 								<option
-									value={planet.kepoi_name}
-									key={planet.kepoi_name + '_' + planet.kepid}
+									value={planet.kepler_name}
+									key={planet.kepler_name}
 								>
-									{planet.kepler_name
-										? planet.kepler_name
-										: planet.kepoi_name}
+									{planet.kepler_name}
 								</option>
 							));
 						}, [props.planets])}
 					</Form.Select>
+					<Button type="submit">Submit</Button>
 				</Form>
-			</Container>
-			<Container>
-				<Button type="submit">Submit</Button>
 			</Container>
 		</>
 	);

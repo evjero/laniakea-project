@@ -16,6 +16,11 @@ export async function getAllLaunches() {
 	);
 }
 
+export async function exists(flightNumber: number) {
+	const launch = await LaunchModel.findOne({ flightNumber });
+	return launch !== undefined;
+}
+
 async function getLatestFlightNumber() {
 	const latestLaunch = await LaunchModel.findOne({}).sort('-flightNumber');
 	return latestLaunch?.flightNumber ?? DEFAULT_FLIGHT_NUMBER;
@@ -26,26 +31,37 @@ export async function postLaunch(
 	partialLaunch: Omit<Launch, 'flightNumber' | 'success' | 'upcoming'>
 ) {
 	const _flightNumber = (await getLatestFlightNumber()) + 1;
+	console.debug('\t_flightNumber: ', _flightNumber);
 	const launch: Launch = {
 		...partialLaunch,
 		flightNumber: _flightNumber,
 		success: true,
 		upcoming: true,
 	};
+	console.debug('\tlaunch: ', JSON.stringify(launch));
 	const planet = await PlanetModel.findOne({
-		kepoi_name: launch.destination,
+		kepler_name: launch.destination,
 	});
+	console.debug('\tplanet: ', JSON.stringify(planet));
 	if (!planet) {
-		throw new Error(
-			'No matching planet was found by ' + launch.destination
-		);
+		console.error('No matching planet was found by ' + launch.destination);
+		return false;
 	}
-	await LaunchModel.updateOne({ flightNumber: launch.flightNumber }, launch, {
-		upsert: true,
-	});
+	const response = await LaunchModel.updateOne(
+		{ flightNumber: launch.flightNumber },
+		launch,
+		{
+			upsert: true,
+		}
+	);
+	return response.modifiedCount >= 0;
 }
 
-/** Removes a launch from the MongoDB */
-export async function deleteLaunch(flightNumber: number) {
-	await LaunchModel.deleteOne({ flightNumber });
+/** Does not remove the launch from the MongoDB, but updates it to unsuccessful */
+export async function abortLaunch(flightNumber: number) {
+	const response = await LaunchModel.updateOne(
+		{ flightNumber },
+		{ upcoming: false, success: false }
+	);
+	return response.modifiedCount === 1;
 }

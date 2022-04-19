@@ -47,8 +47,18 @@ export const launchesSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
+			.addCase(addLaunch.pending, (state) => {
+				state.status = 'LOADING';
+			})
 			.addCase(addLaunch.fulfilled, (state, action) => {
+				state.status = 'READY';
 				state.launches = [...state.launches, action.payload];
+			})
+			.addCase(addLaunch.rejected, (state) => {
+				state.status = 'ERRORED';
+			})
+			.addCase(abortLaunch.pending, (state) => {
+				state.status = 'LOADING';
 			})
 			.addCase(abortLaunch.fulfilled, (state, action) => {
 				const existingLaunchIndex = state.launches.findIndex(
@@ -57,6 +67,7 @@ export const launchesSlice = createSlice({
 				if (existingLaunchIndex >= 0) {
 					state.launches.splice(existingLaunchIndex, 1);
 				}
+				state.status = 'READY';
 			})
 			.addCase(abortLaunch.rejected, (state) => {
 				state.status = 'ERRORED';
