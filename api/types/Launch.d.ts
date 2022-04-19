@@ -6,7 +6,7 @@ export type Launch = {
 	/** Unique flight number */
 	flightNumber: number;
 	/** Date of launch */
-	launchDate: Date;
+	launchDate: string;
 	/** Mission name */
 	mission: string;
 	/** Rocket type */

@@ -1,12 +1,10 @@
 import { Launch } from '@api/types/Launch';
 import { API } from '@api/types/API';
-import { Planet } from '@api/types/Planet';
 import * as React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { RootState, AppDispatch } from '../stores/@reduxjs/store';
-import { addLaunch } from '../stores/@reduxjs/slices/launchesSlice';
-import { postLaunch } from '../hooks/launches/postLaunch';
+import { addLaunchThunk } from '../stores/@reduxjs/slices/launchesSlice';
 
 type StateProps = API;
 type DispatchProps = {
@@ -15,6 +13,7 @@ type DispatchProps = {
 type Props = StateProps & DispatchProps;
 
 function Launch(props: Props): JSX.Element {
+	const { addLaunch } = props;
 	const submit = React.useCallback(
 		async (e) => {
 			e.preventDefault();
@@ -26,19 +25,17 @@ function Launch(props: Props): JSX.Element {
 			if (!date || !mission || !rocket || !target) {
 				return;
 			}
-			const newLaunch: Launch = {
-				launchDate: new Date(date.toString()),
+			const request: Launch = {
+				launchDate: new Date(date.toString()).toDateString(),
 				mission: mission.toString(),
 				rocket: rocket.toString(),
 				destination: target.toString(),
-				flightNumber: Math.fround(Math.random() * 3.14159 * 42000),
+				flightNumber: 0, //determined by server
 				upcoming: true,
 			};
-			postLaunch(newLaunch).then(() => {
-				addLaunch(newLaunch);
-			});
+			addLaunch(request);
 		},
-		[postLaunch]
+		[addLaunch]
 	);
 	const today = new Date().toISOString().split('T')[0];
 	return (
@@ -118,6 +115,6 @@ export default connect(
 		launches: store.launches.launches,
 	}),
 	(dispatch: AppDispatch): DispatchProps => ({
-		addLaunch: (launch: Launch) => dispatch(addLaunch(launch)),
+		addLaunch: (launch: Launch) => dispatch(addLaunchThunk(launch)),
 	})
 )(Launch);

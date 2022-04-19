@@ -1,0 +1,15 @@
+table {
+	max-height: fit-content;
+	overflow: hidden auto;
+
+	span.abortLaunch {
+		color: darkred;
+		cursor: pointer;
+	}
+	span.failure {
+		color: darkred;
+	}
+	span.success {
+		color: green;
+	}
+}

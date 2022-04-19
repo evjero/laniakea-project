@@ -33,7 +33,8 @@ function RecordedLaunches(props: Props): JSX.Element {
 							<th style={{ width: '2rem' }}></th>
 							<th style={{ width: '3rem' }}>No.</th>
 							<th style={{ width: '9rem' }}>Date</th>
-							<th>Mission</th>
+							<th style={{ width: '7rem' }}>Mission</th>
+							<th style={{ width: '7rem' }}>Destination</th>
 							<th style={{ width: '7rem' }}>Rocket</th>
 						</tr>
 					</thead>
@@ -44,11 +45,11 @@ function RecordedLaunches(props: Props): JSX.Element {
 									<tr key={String(launch.flightNumber)}>
 										<td>
 											<span
-												style={{
-													color: launch.success
-														? 'greenyellow'
-														: 'red',
-												}}
+												className={
+													launch.success
+														? 'success'
+														: 'failure'
+												}
 											>
 												█
 											</span>
@@ -60,6 +61,7 @@ function RecordedLaunches(props: Props): JSX.Element {
 											).toDateString()}
 										</td>
 										<td>{launch.mission}</td>
+										<td>{launch.destination}</td>
 										<td>{launch.rocket}</td>
 									</tr>
 								);

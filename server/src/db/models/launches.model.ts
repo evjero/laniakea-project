@@ -31,18 +31,15 @@ export async function postLaunch(
 	partialLaunch: Omit<Launch, 'flightNumber' | 'success' | 'upcoming'>
 ) {
 	const _flightNumber = (await getLatestFlightNumber()) + 1;
-	console.debug('\t_flightNumber: ', _flightNumber);
 	const launch: Launch = {
 		...partialLaunch,
 		flightNumber: _flightNumber,
 		success: true,
 		upcoming: true,
 	};
-	console.debug('\tlaunch: ', JSON.stringify(launch));
 	const planet = await PlanetModel.findOne({
 		kepler_name: launch.destination,
 	});
-	console.debug('\tplanet: ', JSON.stringify(planet));
 	if (!planet) {
 		console.error('No matching planet was found by ' + launch.destination);
 		return false;

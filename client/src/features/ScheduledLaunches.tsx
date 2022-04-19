@@ -4,7 +4,7 @@ import { API } from '@api/types/API';
 import { connect } from 'react-redux';
 import { Launch } from '@api/types/Launch';
 import { AppDispatch, RootState } from 'stores/@reduxjs/store';
-import { abortLaunch } from '../stores/@reduxjs/slices/launchesSlice';
+import { abortLaunchThunk } from '../stores/@reduxjs/slices/launchesSlice';
 
 type StateProps = Omit<API, 'planets'>;
 type DispatchProps = {
@@ -12,6 +12,7 @@ type DispatchProps = {
 };
 type Props = StateProps & DispatchProps;
 function ScheduledLaunches(props: Props): JSX.Element {
+	const { abortLaunch } = props;
 	const scheduledLaunches = props.launches.filter(
 		(launch) => launch.upcoming
 	);
@@ -42,7 +43,8 @@ function ScheduledLaunches(props: Props): JSX.Element {
 							<th style={{ width: '2rem' }}></th>
 							<th style={{ width: '3rem' }}>No.</th>
 							<th style={{ width: '9rem' }}>Date</th>
-							<th>Mission</th>
+							<th style={{ width: '7rem' }}>Mission</th>
+							<th style={{ width: '7rem' }}>Destination</th>
 							<th style={{ width: '7rem' }}>Rocket</th>
 						</tr>
 					</thead>
@@ -53,14 +55,13 @@ function ScheduledLaunches(props: Props): JSX.Element {
 									<tr key={String(launch.flightNumber)}>
 										<td>
 											<span
-												style={{
-													color: 'red',
-												}}
-												onClick={() =>
+												className="abortLaunch"
+												onClick={(e) => {
+													e.preventDefault();
 													abortLaunch(
 														launch.flightNumber
-													)
-												}
+													);
+												}}
 											>
 												✖
 											</span>
@@ -72,6 +73,7 @@ function ScheduledLaunches(props: Props): JSX.Element {
 											).toDateString()}
 										</td>
 										<td>{launch.mission}</td>
+										<td>{launch.destination}</td>
 										<td>{launch.rocket}</td>
 									</tr>
 								);
@@ -90,6 +92,6 @@ export default connect(
 	}),
 	(dispatch: AppDispatch): DispatchProps => ({
 		abortLaunch: (flightNumber: number) =>
-			dispatch(abortLaunch(flightNumber)),
+			dispatch(abortLaunchThunk(flightNumber)),
 	})
 )(ScheduledLaunches);

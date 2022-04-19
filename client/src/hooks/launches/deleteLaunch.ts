@@ -4,9 +4,5 @@ import { AxiosPromise } from 'axios';
 export function deleteLaunch(
 	flightNumber: Launch['flightNumber']
 ): AxiosPromise<void> {
-	return APIClient.getInstance().delete(`/launches`, {
-		params: {
-			id: flightNumber,
-		},
-	});
+	return APIClient.getInstance().delete(`/launches/${flightNumber}`);
 }

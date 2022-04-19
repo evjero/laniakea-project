@@ -15,7 +15,7 @@ const initialState: LaunchState = {
 };
 
 /** Add a new launch to schedule */
-export const addLaunch = createAsyncThunk<Launch, Launch, ThunkConfig>(
+export const addLaunchThunk = createAsyncThunk<Launch, Launch, ThunkConfig>(
 	'addLaunch',
 	async (launch, thunkApi) => {
 		try {
@@ -28,7 +28,7 @@ export const addLaunch = createAsyncThunk<Launch, Launch, ThunkConfig>(
 );
 
 /** Abort a launch from schedule */
-export const abortLaunch = createAsyncThunk<number, number, ThunkConfig>(
+export const abortLaunchThunk = createAsyncThunk<number, number, ThunkConfig>(
 	'abortLaunch',
 	async (flightNumber, thunkApi) => {
 		try {
@@ -51,29 +51,33 @@ export const launchesSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(addLaunch.pending, (state) => {
+			.addCase(addLaunchThunk.pending, (state) => {
 				state.status = 'LOADING';
 			})
-			.addCase(addLaunch.fulfilled, (state, action) => {
+			.addCase(addLaunchThunk.fulfilled, (state, action) => {
 				state.status = 'READY';
 				state.launches = [...state.launches, action.payload];
 			})
-			.addCase(addLaunch.rejected, (state) => {
+			.addCase(addLaunchThunk.rejected, (state) => {
 				state.status = 'ERRORED';
 			})
-			.addCase(abortLaunch.pending, (state) => {
+			.addCase(abortLaunchThunk.pending, (state) => {
 				state.status = 'LOADING';
 			})
-			.addCase(abortLaunch.fulfilled, (state, action) => {
+			.addCase(abortLaunchThunk.fulfilled, (state, action) => {
 				const existingLaunchIndex = state.launches.findIndex(
 					(launch) => launch.flightNumber === action.payload
 				);
 				if (existingLaunchIndex >= 0) {
-					state.launches.splice(existingLaunchIndex, 1);
+					state.launches[existingLaunchIndex] = {
+						...state.launches[existingLaunchIndex],
+						success: false,
+						upcoming: false,
+					};
 				}
 				state.status = 'READY';
 			})
-			.addCase(abortLaunch.rejected, (state) => {
+			.addCase(abortLaunchThunk.rejected, (state) => {
 				state.status = 'ERRORED';
 			});
 	},
