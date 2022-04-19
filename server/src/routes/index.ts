@@ -2,9 +2,9 @@ import express from 'express';
 import { planetsRouter } from './planets/router';
 import { launchesRouter } from './launches/router';
 
-const apiRouter = express.Router();
+const rootRouter = express.Router();
 
-apiRouter.use(planetsRouter);
-apiRouter.use(launchesRouter);
+rootRouter.use(planetsRouter);
+rootRouter.use(launchesRouter);
 
-export { apiRouter };
+export { rootRouter };

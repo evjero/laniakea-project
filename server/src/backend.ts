@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import type { CorsOptions } from 'cors';
 import CONSOLE_ID from './consoleID';
-import { apiRouter } from './routes/api';
+import { rootRouter } from './routes';
 
 const backend = express();
 
@@ -47,6 +47,6 @@ backend.use(
 	})
 );
 backend.use(express.json()); //Handle JSON requests/responses
-backend.use('/api/v1', apiRouter); //API Routes
+backend.use('/api/v1', rootRouter); //API Routes
 
 export default backend;

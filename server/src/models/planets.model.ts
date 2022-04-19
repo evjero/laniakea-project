@@ -3,7 +3,7 @@ import path from 'path';
 import { parse } from 'csv-parse';
 import PlanetModel from './planets.mongo';
 import type { Planet } from '@api/types/Planet';
-import CONSOLE_ID from '../../consoleID';
+import CONSOLE_ID from '../consoleID';
 
 /** Get all planets from MongoDB */
 export async function getPlanets() {
@@ -32,8 +32,9 @@ export function loadPlanetsFromDisk(): Promise<void> {
 	};
 
 	return new Promise((resolve, reject) => {
+		console.log(__dirname);
 		const csvStream = fs.createReadStream(
-			path.join(__dirname, '../../../public/data/koi_ctable.csv')
+			path.join(__dirname, '../../public/data/koi_ctable.csv')
 		);
 		const pipe = csvStream.pipe(
 			parse({

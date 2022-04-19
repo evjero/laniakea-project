@@ -6,7 +6,7 @@ Project created in order to expand knowledge of bridging the gap between fronten
 
 # Project Overview
 
-This project, despite it's name, will use Exoplanet data captured by Kepler via their [TAP interface](https://exoplanetarchive.ipac.caltech.edu/docs/TAP/usingTAP.html#PS). These Kepler Objects of Interest (KOI) will be provided in a tabular (CSV) format. Offline use will use a downloaded table backup.
+This project, despite it's name, will use Exoplanet data captured by Kepler via their [TAP interface](https://exoplanetarchive.ipac.caltech.edu/docs/TAP/usingTAP.html#PS). These Kepler Objects of Interest (KOI) will be provided in a tabular (CSV) format and initially loaded into a Mongo database.
 
 These KOI will enable us to launch our own missions to explore the edges of space.
 
@@ -19,6 +19,7 @@ These KOI will enable us to launch our own missions to explore the edges of spac
 -   [x] React components/features (SPA)
 -   [x] Redux Toolkit (RTK) state management
 -   [x] MongoDB Cluster + mongoose integration
+-   [x] Update route unit tests
 -   [ ] Add SpaceX API + Historical data
 -   [ ] Github CI Actions (+preformat)
 -   [ ] Tidy modules/imports

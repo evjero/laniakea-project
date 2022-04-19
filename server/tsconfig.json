@@ -45,10 +45,6 @@
 		"types": ["jest", "node", "../api"],
 		"useDefineForClassFields": true
 	},
-	"include": [
-		"./**/*.ts",
-		"src/mocks/handlers.js",
-		"src/routes/launches/launches.test.js"
-	],
-	"exclude": ["node_modules", "build"]
+	"include": ["./**/*.ts"],
+	"exclude": ["node_modules", "build", "**/*.test.ts"]
 }

@@ -4,7 +4,7 @@ import {
 	postLaunch as MongoPostLaunch,
 	abortLaunch as MongoabortLaunch,
 	exists as MongoLaunchExists,
-} from '../../db/models/launches.model';
+} from '../../models/launches.model';
 import { Request, Response } from 'express';
 
 export async function getLaunches(_req: Request, res: Response) {
