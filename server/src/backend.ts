@@ -1,11 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import helmet from 'helmet';
 import type { CorsOptions } from 'cors';
 import CONSOLE_ID from './consoleID';
 import { apiRouter } from './routes/api';
 
 const backend = express();
+
+// Add specific headers to add security
+backend.use(helmet());
 
 //CORS
 type StaticOrigin = boolean | string | RegExp | (boolean | string | RegExp)[];

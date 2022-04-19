@@ -1,6 +1,9 @@
 import { API, Launch, Planet } from '@api/index';
 
-//Interim database singleton object
+/**
+ * Interim database singleton object when not using external
+ * @deprecated
+ */
 export class Database implements API {
 	private static instance: Database;
 	private _planets: Planet[] = [];

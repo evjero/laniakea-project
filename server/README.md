@@ -1,6 +1,6 @@
 # laniakea-project server
 
-## Node.js, Express, and MongoDB
+## Node.js, Express, and MongoDB Cluster
 
 # Commands
 
