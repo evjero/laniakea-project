@@ -10,6 +10,22 @@ This project, despite it's name, will use Exoplanet data captured by Kepler via 
 
 These KOI will enable us to launch our own missions to explore the edges of space.
 
+## Tasks
+
+-   [x] Node.js backend executable
+-   [x] Express.js app with router/routes
+-   [x] Define API type declarations
+-   [x] Vite frontend executable
+-   [x] React components/features (SPA)
+-   [x] Redux Toolkit (RTK) state management
+-   [x] MongoDB Cluster + mongoose integration
+-   [ ] Add SpaceX API + Historical data
+-   [ ] Github CI Actions (+preformat)
+-   [ ] Tidy modules/imports
+-   [ ] Add comments for unclear code
+-   [ ] Docker image + container
+-   [ ] Host on github.io or other
+
 # Commands
 
 `npm run install` - Installs dependencies for both client and server

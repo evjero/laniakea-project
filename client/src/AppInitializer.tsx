@@ -8,7 +8,10 @@ import { AxiosResponse } from 'axios';
 import { getHabitablePlanets } from './hooks/planets/getHabitablePlanets';
 import { getLaunches } from './hooks/launches/getLaunches';
 import { Launch } from '../../api';
-import { addLaunch, setLaunches } from './stores/@reduxjs/slices/launchesSlice';
+import {
+	addLaunchThunk,
+	setLaunches,
+} from './stores/@reduxjs/slices/launchesSlice';
 
 type DispatchProps = {
 	addPlanets: (planets: Planet[]) => void;
