@@ -6,24 +6,35 @@ import { addPlanets } from './stores/@reduxjs/slices/planetsSlice';
 import { AppDispatch } from './stores/@reduxjs/store';
 import { AxiosResponse } from 'axios';
 import { getHabitablePlanets } from './hooks/planets/getHabitablePlanets';
+import { getLaunches } from './hooks/launches/getLaunches';
+import { Launch } from '../../api';
+import { addLaunch, setLaunches } from './stores/@reduxjs/slices/launchesSlice';
 
 type DispatchProps = {
-	setPlanets: (planets: Planet[]) => void;
+	addPlanets: (planets: Planet[]) => void;
+	setLaunches: (launches: Launch[]) => void;
 };
 type Props = {
 	children: React.ReactNode;
 } & DispatchProps;
 
 function AppInitializer(props: Props) {
-	const { children, setPlanets } = props;
+	const { children, addPlanets, setLaunches } = props;
 
 	useEffect(() => {
 		getHabitablePlanets()
 			.then((response: AxiosResponse<Planet[]>) => {
-				setPlanets(response.data);
+				addPlanets(response.data);
 			})
 			.catch((e: any) => {
-				throw new Error(e);
+				throw new Error('Failed to assign Habitable planets', e);
+			});
+		getLaunches()
+			.then((response: AxiosResponse<Launch[]>) => {
+				setLaunches(response.data);
+			})
+			.catch((e: any) => {
+				throw new Error('Failed to assign launches', e);
 			});
 	}, []);
 
@@ -32,6 +43,7 @@ function AppInitializer(props: Props) {
 export default connect(
 	undefined,
 	(dispatch: AppDispatch): DispatchProps => ({
-		setPlanets: (planets: Planet[]) => dispatch(addPlanets(planets)),
+		addPlanets: (planets: Planet[]) => dispatch(addPlanets(planets)),
+		setLaunches: (launches: Launch[]) => dispatch(setLaunches(launches)),
 	})
 )(AppInitializer);

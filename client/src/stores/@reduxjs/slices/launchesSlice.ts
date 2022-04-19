@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { deleteLaunch } from '../../../hooks/launches/deleteLaunch';
 import type { Launch } from '@api/types/Launch';
 import type { RootState, ThunkConfig } from '../store';
@@ -44,7 +44,11 @@ export const launchesSlice = createSlice({
 	name: 'launches',
 	// `createSlice` will infer the state type from the `initialState` argument
 	initialState,
-	reducers: {},
+	reducers: {
+		setLaunches: (state, action: PayloadAction<Launch[]>) => {
+			state.launches = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(addLaunch.pending, (state) => {
@@ -74,6 +78,8 @@ export const launchesSlice = createSlice({
 			});
 	},
 });
+
+export const { setLaunches } = launchesSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const getPlanets = (state: RootState) => state.launches.launches;
