@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import http, { Server } from 'http';
 import backend from './backend';
 import CONSOLE_ID from './consoleID';
-import { Database } from './db';
 import mongoose from 'mongoose';
 import { loadPlanetsFromDisk } from './db/models/planets.model';
 

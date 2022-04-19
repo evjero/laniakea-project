@@ -1,6 +1,6 @@
 import express from 'express';
-import { planetsRouter } from './planets';
-import { launchesRouter } from './launches';
+import { planetsRouter } from './planets/router';
+import { launchesRouter } from './launches/router';
 
 const apiRouter = express.Router();
 
