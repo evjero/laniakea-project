@@ -3,7 +3,7 @@ import { API } from '@api/types/API';
 import { Planet } from '@api/types/Planet';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Store } from 'stores/@reduxjs/store';
+import { RootState } from 'stores/@reduxjs/store';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
 import { Outlet } from 'react-router-dom';

@@ -4,13 +4,13 @@ import { Planet } from '@api/types/Planet';
 import * as React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Store, StoreDispatch } from '../stores/@reduxjs/store';
+import { RootState, AppDispatch } from '../stores/@reduxjs/store';
 import { addLaunch } from '../stores/@reduxjs/slices/launchesSlice';
 import { postLaunch } from '../hooks/launches/postLaunch';
 
 type StateProps = API;
 type DispatchProps = {
-	addLaunch: Function;
+	addLaunch: (launch: Launch) => void;
 };
 type Props = StateProps & DispatchProps;
 
@@ -111,17 +111,17 @@ function Launch(props: Props): JSX.Element {
 				</Form>
 			</Container>
 			<Container>
-				<Button type="submit" />
+				<Button type="submit">Submit</Button>
 			</Container>
 		</>
 	);
 }
 export default connect(
-	(store: Store): StateProps => ({
+	(store: RootState): StateProps => ({
 		planets: store.planets.planets,
 		launches: store.launches.launches,
 	}),
-	(dispatch: StoreDispatch): DispatchProps => ({
+	(dispatch: AppDispatch): DispatchProps => ({
 		addLaunch: (launch: Launch) => dispatch(addLaunch(launch)),
 	})
 )(Launch);

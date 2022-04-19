@@ -3,11 +3,15 @@ import { Alert, Container, Table } from 'react-bootstrap';
 import { API } from '@api/types/API';
 import { connect } from 'react-redux';
 import { Launch } from '@api/types/Launch';
-import { Store } from 'stores/@reduxjs/store';
+import { RootState } from 'stores/@reduxjs/store';
 
 type StateProps = Omit<API, 'planets'>;
 type Props = StateProps;
 function ScheduledLaunches(props: Props): JSX.Element {
+	const scheduledLaunches = props.launches.filter(
+		(launch) => launch.upcoming
+	);
+
 	return (
 		<Container>
 			<Alert variant="info">
@@ -33,33 +37,31 @@ function ScheduledLaunches(props: Props): JSX.Element {
 				</thead>
 				<tbody>
 					{React.useMemo(() => {
-						return props.launches
-							?.filter((launch) => !launch.upcoming)
-							.map((launch: Launch) => {
-								return (
-									<tr key={String(launch.flightNumber)}>
-										<td>
-											<span
-												style={{
-													color: launch.success
-														? 'greenyellow'
-														: 'red',
-												}}
-											>
-												█
-											</span>
-										</td>
-										<td>{launch.flightNumber}</td>
-										<td>
-											{new Date(
-												launch.launchDate
-											).toDateString()}
-										</td>
-										<td>{launch.mission}</td>
-										<td>{launch.rocket}</td>
-									</tr>
-								);
-							});
+						return scheduledLaunches.map((launch: Launch) => {
+							return (
+								<tr key={String(launch.flightNumber)}>
+									<td>
+										<span
+											style={{
+												color: launch.success
+													? 'greenyellow'
+													: 'red',
+											}}
+										>
+											█
+										</span>
+									</td>
+									<td>{launch.flightNumber}</td>
+									<td>
+										{new Date(
+											launch.launchDate
+										).toDateString()}
+									</td>
+									<td>{launch.mission}</td>
+									<td>{launch.rocket}</td>
+								</tr>
+							);
+						});
 					}, [props.launches])}
 				</tbody>
 			</Table>
@@ -68,7 +70,7 @@ function ScheduledLaunches(props: Props): JSX.Element {
 }
 
 export default connect(
-	(store: Store): StateProps => ({
+	(store: RootState): StateProps => ({
 		launches: store.launches.launches,
 	})
 )(ScheduledLaunches);

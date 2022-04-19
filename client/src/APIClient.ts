@@ -38,4 +38,10 @@ export class APIClient {
 	): Promise<R> {
 		return this.axiosClient.post(url, config);
 	}
+	delete<T = any, R = AxiosResponse<T, any>, D = any>(
+		url: string,
+		config?: AxiosRequestConfig<D> | undefined
+	): Promise<R> {
+		return this.axiosClient.delete(url, config);
+	}
 }

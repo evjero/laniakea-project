@@ -1,25 +1,26 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import planetsReducer from './slices/planetsSlice';
 import launchesReducer from './slices/launchesSlice';
 
+const rootReducer = combineReducers({
+	planets: planetsReducer,
+	launches: launchesReducer,
+});
+
 export const store = configureStore({
-	reducer: {
-		planets: planetsReducer,
-		launches: launchesReducer,
-	},
+	reducer: rootReducer,
+	devTools: true,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware()
-			/** TODO some other middleware */
+			/** TODO perhaps some other middleware */
 			.concat(logger),
 });
 
+export type AppStore = typeof store;
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type Store = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type StoreDispatch = typeof store.dispatch;
-
-// Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useStoreDispatch = () => useDispatch<StoreDispatch>();
-export const useStoreSelector: TypedUseSelectorHook<Store> = useSelector;
+export type AppDispatch = typeof store.dispatch;
+// For thunk type parameters
+export type ThunkConfig = { state: RootState };
