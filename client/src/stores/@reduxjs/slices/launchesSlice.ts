@@ -1,13 +1,8 @@
-import type { Launch } from '@api/types/Launch';
-import {
-	createAction,
-	createAsyncThunk,
-	createSlice,
-	PayloadAction,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { deleteLaunch } from '../../../hooks/launches/deleteLaunch';
-import { postLaunch } from '../../../hooks/launches/postLaunch';
+import type { Launch } from '@api/types/Launch';
 import type { RootState, ThunkConfig } from '../store';
+import { postLaunch } from '../../../hooks/launches/postLaunch';
 // Define a type for the slice state
 interface LaunchState {
 	launches: Launch[];
@@ -62,6 +57,9 @@ export const launchesSlice = createSlice({
 				if (existingLaunchIndex >= 0) {
 					state.launches.splice(existingLaunchIndex, 1);
 				}
+			})
+			.addCase(abortLaunch.rejected, (state) => {
+				state.status = 'ERRORED';
 			});
 	},
 });

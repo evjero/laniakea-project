@@ -1,5 +1,7 @@
 import { getPlanets as MongoGetPlanets } from '../../db/models/planets.model';
+import { Request, Response } from 'express';
 
-export async function getPlanets(_req: any, res: any) {
-	res.status(200).json(await MongoGetPlanets());
+export async function getPlanets(_req: Request, res: Response) {
+	const planets = await MongoGetPlanets();
+	return res.status(200).json(planets);
 }

@@ -22,7 +22,16 @@ async function getLatestFlightNumber() {
 }
 
 /** Saves a launch to the MongoDB */
-export async function postLaunch(launch: Launch) {
+export async function postLaunch(
+	partialLaunch: Omit<Launch, 'flightNumber' | 'success' | 'upcoming'>
+) {
+	const _flightNumber = (await getLatestFlightNumber()) + 1;
+	const launch: Launch = {
+		...partialLaunch,
+		flightNumber: _flightNumber,
+		success: true,
+		upcoming: true,
+	};
 	const planet = await PlanetModel.findOne({
 		kepoi_name: launch.destination,
 	});
