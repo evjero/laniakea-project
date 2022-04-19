@@ -1,6 +1,7 @@
 import { Planet } from './Planet';
 
 export type Launch = {
+	/** Mission destination (kepoi_name) */
 	destination: Planet['kepoi_name'];
 	/** Unique flight number */
 	flightNumber: number;
