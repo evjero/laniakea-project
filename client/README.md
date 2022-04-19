@@ -1,6 +1,6 @@
 # laniakea-project client
 
-## React, Vite, Bootstrap
+## React, RTK, Vite, Bootstrap
 
 Not meant to be something pretty, just functional to Node.js server + MongoDB
 
