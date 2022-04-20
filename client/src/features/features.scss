@@ -1,15 +1,20 @@
+.table-responsive {
+	height: 65vh;
+	tbody {
+		overflow: auto;
+	}
+}
 table {
-	max-height: fit-content;
-	overflow: hidden auto;
-
 	span.abortLaunch {
-		color: darkred;
+		color: #cc0000;
 		cursor: pointer;
 	}
 	span.failure {
-		color: darkred;
+		color: #cc0000;
+		box-shadow: 0px 0px 4px 2px #cc000088;
 	}
 	span.success {
-		color: green;
+		color: #00cc00;
+		box-shadow: 0px 0px 4px 2px #00cc0088;
 	}
 }

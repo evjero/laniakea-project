@@ -16,7 +16,19 @@ export async function getPlanets() {
 	);
 }
 
-export function loadPlanetsFromDisk(): Promise<void> {
+export async function exists(kepid: number) {
+	const launch = await PlanetModel.findOne({ kepid });
+	return launch !== undefined && launch !== null;
+}
+
+export async function loadPlanetsFromDisk(): Promise<void> {
+	if (await exists(11768142)) {
+		console.debug(
+			`[${CONSOLE_ID}] Database already populated with planets`
+		);
+		return;
+	}
+
 	/** Filters planets down to what has been deemed habitable */
 	const isHabitablePlanet = (planet: Planet): boolean => {
 		if (planet.koi_insol !== undefined && planet.koi_prad !== undefined) {

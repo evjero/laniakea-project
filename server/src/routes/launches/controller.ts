@@ -6,9 +6,11 @@ import {
 	exists as MongoLaunchExists,
 } from '../../models/launches.model';
 import { Request, Response } from 'express';
+import { getPagination } from '../../services/query';
 
-export async function getLaunches(_req: Request, res: Response) {
-	const launches = await MongoGetLaunches();
+export async function getLaunches(req: Request, res: Response) {
+	const { skip, limit } = getPagination(req.query);
+	const launches = await MongoGetLaunches(skip, limit);
 	return res.status(200).json(launches);
 }
 

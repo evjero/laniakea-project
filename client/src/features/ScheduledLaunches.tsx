@@ -72,7 +72,15 @@ function ScheduledLaunches(props: Props): JSX.Element {
 												launch.launchDate
 											).toDateString()}
 										</td>
-										<td>{launch.mission}</td>
+										<td
+											style={{
+												overflow: 'hidden',
+												textOverflow: 'ellipsis',
+												whiteSpace: 'nowrap',
+											}}
+										>
+											{launch.mission}
+										</td>
 										<td>{launch.destination}</td>
 										<td>{launch.rocket}</td>
 									</tr>
