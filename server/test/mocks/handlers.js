@@ -33,7 +33,7 @@ export const handlers = [
 				{
 					destination: 'Ktest1',
 					flightNumber: 1,
-					launchDate: new Date('2032-04-01'),
+					launchDate: new Date('2032-04-01').toDateString(),
 					mission: 'Spectacle',
 					rocket: 'Saturn VIII',
 					success: false,
