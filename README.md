@@ -19,9 +19,9 @@ These KOI will enable us to launch our own missions to explore the edges of spac
 -   [x] React components/features (SPA)
 -   [x] Redux Toolkit (RTK) state management
 -   [x] MongoDB Cluster + mongoose integration
--   [ ] Update route unit tests to include mock database
+-   [x] Update route unit tests to include mock database
 -   [x] Add SpaceX Historical data
--   [ ] Github CI Actions (+preformat)
+-   [x] Github CI Actions (+husky)
 -   [ ] Tidy modules/imports
 -   [ ] Add comments for unclear code
 -   [ ] Docker image + container

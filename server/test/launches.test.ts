@@ -2,7 +2,9 @@ import request from 'supertest';
 import backend from '../src/backend';
 import { mongoConnect, mongoDisconnect } from '../src/services/mongo';
 import { loadPlanetsFromDisk } from '../src/models/planets.model';
+import { loadLaunchesFromSpaceX } from '../src/models/launches.model';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 describe('Launches API', () => {
@@ -10,6 +12,7 @@ describe('Launches API', () => {
 		//Similar to server.ts
 		await mongoConnect();
 		await loadPlanetsFromDisk();
+		await loadLaunchesFromSpaceX();
 	});
 
 	afterAll(async () => {
