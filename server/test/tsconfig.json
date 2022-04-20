@@ -40,11 +40,11 @@
 		"target": "ES2020",
 		"baseUrl": "./src",
 		"paths": {
-			"@api/*": ["../../api/*"]
+			"@api/*": ["../../../api/*"]
 		},
-		"types": ["jest", "node", "../api"],
+		"types": ["jest", "node", "../../api"],
 		"useDefineForClassFields": true
 	},
-	"include": ["./**/*.ts"],
+	"include": ["./**/*.test.ts"],
 	"exclude": ["node_modules", "build"]
 }

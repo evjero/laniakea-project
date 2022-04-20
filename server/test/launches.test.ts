@@ -1,7 +1,9 @@
 import request from 'supertest';
-import backend from '../../backend';
-import { mongoConnect, mongoDisconnect } from '../../services/mongo';
-import { loadPlanetsFromDisk } from '../../models/planets.model';
+import backend from '../src/backend';
+import { mongoConnect, mongoDisconnect } from '../src/services/mongo';
+import { loadPlanetsFromDisk } from '../src/models/planets.model';
+import dotenv from 'dotenv';
+dotenv.config();
 
 describe('Launches API', () => {
 	beforeAll(async () => {

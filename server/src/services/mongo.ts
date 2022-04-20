@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGO_URL =
-	'mongodb+srv://laniakea:2ZV3ABHxRUE55NO5@laniakeacluster.njuio.mongodb.net/koi?retryWrites=true&w=majority';
+const MONGO_URL = process.env.MONGO_ENDPOINT;
 
 mongoose.connection.once('open', () => {
 	console.debug('[MongoDB] Ready');
@@ -11,7 +10,11 @@ mongoose.connection.on('error', (error: any) => {
 });
 
 export async function mongoConnect() {
-	return mongoose.connect(MONGO_URL, {});
+	if (MONGO_URL) {
+		return mongoose.connect(MONGO_URL, {});
+	} else {
+		throw new Error('[MongoDB] No endpoint specified!');
+	}
 }
 
 export async function mongoDisconnect() {
