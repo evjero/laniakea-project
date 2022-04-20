@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "server/build/server.js",
 	"scripts": {
+		"build": "npm run build --prefix server && npm run build --prefix client",
 		"client": "npm start --prefix client",
 		"install": "cd server && npm i && cd ../client && npm i && cd ..",
 		"start": "npm run server & npm run client",
