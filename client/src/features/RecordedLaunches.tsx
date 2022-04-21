@@ -1,8 +1,8 @@
+import { API } from '@api/types/API';
+import { Launch } from '@api/types/Launch';
 import * as React from 'react';
 import { Alert, Container, Table } from 'react-bootstrap';
-import { API } from '@api/types/API';
 import { connect } from 'react-redux';
-import { Launch } from '@api/types/Launch';
 import { RootState } from 'stores/@reduxjs/store';
 
 type StateProps = Omit<API, 'planets'>;

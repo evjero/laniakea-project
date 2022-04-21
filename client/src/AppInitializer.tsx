@@ -1,17 +1,14 @@
-import * as React from 'react';
 import { Planet } from '@api/types/Planet';
-import { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Launch } from '../../api';
+import { getLaunches } from './hooks/launches/getLaunches';
+import { getHabitablePlanets } from './hooks/planets/getHabitablePlanets';
+import { setLaunches } from './stores/@reduxjs/slices/launchesSlice';
 import { addPlanets } from './stores/@reduxjs/slices/planetsSlice';
 import { AppDispatch } from './stores/@reduxjs/store';
-import { AxiosResponse } from 'axios';
-import { getHabitablePlanets } from './hooks/planets/getHabitablePlanets';
-import { getLaunches } from './hooks/launches/getLaunches';
-import { Launch } from '../../api';
-import {
-	addLaunchThunk,
-	setLaunches,
-} from './stores/@reduxjs/slices/launchesSlice';
 
 type DispatchProps = {
 	addPlanets: (planets: Planet[]) => void;

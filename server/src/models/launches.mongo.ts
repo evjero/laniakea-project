@@ -1,6 +1,5 @@
 import type { Launch } from '@api/types/Launch';
-import { Schema, model } from 'mongoose';
-import { PlanetModel } from './planets.mongo';
+import { model, Schema } from 'mongoose';
 
 export const LaunchesSchema = new Schema<Launch>({
 	/** kepler_name of Planet */

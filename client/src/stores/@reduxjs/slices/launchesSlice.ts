@@ -1,8 +1,8 @@
+import type { Launch } from '@api/types/Launch';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { deleteLaunch } from '../../../hooks/launches/deleteLaunch';
-import type { Launch } from '@api/types/Launch';
-import type { RootState, ThunkConfig } from '../store';
 import { postLaunch } from '../../../hooks/launches/postLaunch';
+import type { RootState, ThunkConfig } from '../store';
 // Define a type for the slice state
 interface LaunchState {
 	launches: Launch[];

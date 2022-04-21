@@ -1,8 +1,8 @@
-import express from 'express';
-import cors from 'cors';
-import morgan from 'morgan';
-import helmet from 'helmet';
 import type { CorsOptions } from 'cors';
+import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
 import CONSOLE_ID from './consoleID';
 import { apiRouter } from './routes/api';
 

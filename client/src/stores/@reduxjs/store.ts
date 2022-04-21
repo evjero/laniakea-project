@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import planetsReducer from './slices/planetsSlice';
 import launchesReducer from './slices/launchesSlice';
+import planetsReducer from './slices/planetsSlice';
 
 const rootReducer = combineReducers({
 	planets: planetsReducer,

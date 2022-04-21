@@ -1,10 +1,4 @@
-import axios, {
-	Axios,
-	AxiosInstance,
-	AxiosDefaults,
-	AxiosRequestConfig,
-	AxiosResponse,
-} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { API_URL } from './hooks';
 
 export class APIClient {

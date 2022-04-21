@@ -22,9 +22,8 @@ These KOI will enable us to launch our own missions to explore the edges of spac
 -   [x] Update route unit tests to include mock database
 -   [x] Add SpaceX Historical data
 -   [x] Github CI Actions (+husky)
--   [ ] Tidy modules/imports
--   [ ] Add comments for unclear code
--   [ ] Docker image + container
+-   [x] Tidy modules/imports
+-   [x] Add comments for unclear code
 -   [ ] Host on github.io or other
 
 # Commands

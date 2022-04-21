@@ -1,8 +1,8 @@
+import type { Launch } from '@api/types/Launch';
 import axios from 'axios';
+import CONSOLE_ID from '../consoleID';
 import LaunchModel from './launches.mongo';
 import PlanetModel from './planets.mongo';
-import type { Launch } from '@api/types/Launch';
-import CONSOLE_ID from '../consoleID';
 
 const DEFAULT_FLIGHT_NUMBER = 1000;
 

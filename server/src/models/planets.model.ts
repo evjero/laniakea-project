@@ -1,9 +1,9 @@
+import type { Planet } from '@api/types/Planet';
+import { parse } from 'csv-parse';
 import fs from 'fs';
 import path from 'path';
-import { parse } from 'csv-parse';
-import PlanetModel from './planets.mongo';
-import type { Planet } from '@api/types/Planet';
 import CONSOLE_ID from '../consoleID';
+import PlanetModel from './planets.mongo';
 
 /** Get all planets from MongoDB */
 export async function getPlanets() {

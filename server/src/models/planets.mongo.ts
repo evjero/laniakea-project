@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose';
 import type { Planet } from '@api/types/Planet';
+import { model, Schema } from 'mongoose';
 
 export const PlanetsSchema = new Schema<Planet>({
 	rowid: { type: Schema.Types.Number, required: true },

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Alert } from 'react-bootstrap';
+import { Alert, Container } from 'react-bootstrap';
 
 export function Home(): JSX.Element {
 	return (

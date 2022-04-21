@@ -1,10 +1,10 @@
-import { Launch } from '@api/types/Launch';
 import { API } from '@api/types/API';
+import { Launch } from '@api/types/Launch';
 import * as React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { RootState, AppDispatch } from '../stores/@reduxjs/store';
 import { addLaunchThunk } from '../stores/@reduxjs/slices/launchesSlice';
+import { AppDispatch, RootState } from '../stores/@reduxjs/store';
 
 type StateProps = API;
 type DispatchProps = {

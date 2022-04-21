@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 
 //Pagination
 export function getPagination(query: Partial<Request['query']>) {

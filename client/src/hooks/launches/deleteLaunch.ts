@@ -1,6 +1,6 @@
 import { Launch } from '@api/types/Launch';
-import { APIClient } from '../../APIClient';
 import { AxiosPromise } from 'axios';
+import { APIClient } from '../../APIClient';
 export function deleteLaunch(
 	flightNumber: Launch['flightNumber']
 ): AxiosPromise<void> {

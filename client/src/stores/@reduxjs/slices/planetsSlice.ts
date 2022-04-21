@@ -1,6 +1,6 @@
+import type { Planet } from '@api/types/Planet';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
-import type { Planet } from '@api/types/Planet';
 
 // This slice is not particularly necessary but I wanted to keep
 //    it consistent with launches during development
